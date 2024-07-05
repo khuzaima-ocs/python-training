@@ -1,0 +1,16 @@
+DEBUG - 2024-07-05 06:04:14,546 :  This is debug message
+INFO - 2024-07-05 06:04:14,546 :  This is info message
+WARNING - 2024-07-05 06:04:14,546 :  This is warning message
+ERROR - 2024-07-05 06:04:14,546 :  This is error message
+CRITICAL - 2024-07-05 06:04:14,546 :  This is critical message
+WARNING - 2024-07-05 06:04:41,744 :  This is warning message
+ERROR - 2024-07-05 06:04:41,744 :  This is error message
+CRITICAL - 2024-07-05 06:04:41,745 :  This is critical message
+WARNING - 2024-07-05 06:05:04,098 :  This is warning message
+ERROR - 2024-07-05 06:05:04,098 :  This is error message
+CRITICAL - 2024-07-05 06:05:04,098 :  This is critical message
+DEBUG - 2024-07-05 06:05:22,626 :  This is debug message
+INFO - 2024-07-05 06:05:22,626 :  This is info message
+WARNING - 2024-07-05 06:05:22,629 :  This is warning message
+ERROR - 2024-07-05 06:05:22,629 :  This is error message
+CRITICAL - 2024-07-05 06:05:22,629 :  This is critical message
