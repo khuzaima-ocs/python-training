@@ -5,7 +5,7 @@
 <div class="products">
     {% for p in products %}
         <div class="card">
-            <img src="{{ p.image }}"  height="250px" width="390px"    />
+            <img src="{{ p.image }}"  height="220px" width="340px"    />
             <div class="row">
                 <p class="p-name">{{ p.name }}</p>
                 <p class="p-details">${{ p.price }} ({{ p.stock }} left)</p>
@@ -42,7 +42,7 @@
     }
 
     img {
-        object-fit: cover ;
+        object-fit: cover;
     }
 
     .row {
