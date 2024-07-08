@@ -6,14 +6,12 @@ class FileSystemComponent(metaclass = ABCMeta):
     def __init__(self) -> None:
         pass
 
-    @staticmethod
     @abstractmethod
-    def get_size() -> int:
+    def get_size(self) -> int:
         pass
 
-    @staticmethod
     @abstractmethod
-    def display() -> None:
+    def display(self) -> None:
         pass
 
 
@@ -27,7 +25,7 @@ class File(FileSystemComponent):
         return self.size
     
     def display(self, indent = 0):
-        print(' ' * indent + f"File: {self.name}, Size: {self.size} bytes")
+        print(' ' * indent + f"📃 {self.name}, Size: {self.size} bytes")
 
 
 class Directory(FileSystemComponent):
@@ -44,7 +42,7 @@ class Directory(FileSystemComponent):
         self.components.append(component)
 
     def display(self, indent = 0):
-         print(' ' * indent + f"Directory: {self.name}")
+         print(' ' * indent + f"📂 {self.name}")
          for component in self.components:
              component.display(indent + 3)
 
