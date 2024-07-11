@@ -14,5 +14,3 @@ for i in range(1000):
 
 print(double(100, 4))
 print(half(100, 4))
-
-    
