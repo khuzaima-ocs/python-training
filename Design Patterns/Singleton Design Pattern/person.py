@@ -1,5 +1,3 @@
-
-
 class PersonSingleton:
 
     __instance = None
@@ -22,8 +20,3 @@ class PersonSingleton:
     @staticmethod
     def print_data():
         print(f"Name: {PersonSingleton.__instance.name}, Age: {PersonSingleton.__instance.age}")
-
-p1 = PersonSingleton("Khuzaima", 23)
-PersonSingleton.print_data()
-p2 = PersonSingleton.get_instance()
-p2.print_data()
