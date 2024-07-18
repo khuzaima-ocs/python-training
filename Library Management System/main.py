@@ -1,6 +1,5 @@
-from book import Book
 from library import Library
-
+from person import Person
 
 if __name__ == "__main__":      
     library = Library()
