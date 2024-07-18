@@ -1,74 +1,69 @@
-class Book:
+from book import Book
+from library import Library
 
-    def __init__(self, content, author, title) -> None:
-        self.content = content
-        self.author = author
-        self.title = title
-    
-    def __str__(self) -> str:
-        return f"""
-Book Title:     {self.title}
-Author:         {self.author}
-Content:        {self.content}
-"""
-    
-    def edit_book(self):
-        print(f"Editing book {self.title}\n")
-        
-        print(f"Title ({self.title}) : ", end="")
-        new_title = input()
 
-        print(f"Author ({self.author}) : ", end="")
-        new_author = input()
+if __name__ == "__main__":      
+    library = Library()
 
-        print(f"Content ({self.content[:24]}) : ", end="")
-        new_content = input()
+    print("""***** WELCOME TO LIBRARY MANAGEMENT SYSTEM *****""")
 
-        if new_title and new_title.strip() != "":
-            self.title = new_title
+    guide = """
+1: Add
+2: Read
+3: Delete
+4: Edit
+5: Search
+6: Show Titles
+7: Show Count
+8: Print Guide
+9: Quit"""
 
-        if new_author and new_author.strip() != "":
-            self.author = new_author
+    print(guide)
+    while True:
+        isValidInput = False
+        while not isValidInput:
+            try:
+                inp = int(input("\nEnter your choice: "))
+                isValidInput = True
+            except Exception as e:
+                print("Invalid Input..")
 
-        if new_content and new_content.strip() != "":
-            self.content = new_content
+        match inp:
+            case 1:
+                title = input("Enter book title: ")
+                author = input("Enter book author: ")
+                content = input("Enter book content: ")
+                library.add_new_book(title.strip(), author.strip(), content.strip())
 
-        print(self)
-    
-class Library:
-    
-    def __init__(self):
-        self.books: list[Book] = []
+            case 2:
+                title = input("Enter title of the book you want to read: ")
+                library.print_book(title)
 
-        
-    def add_book(self, content, author, title):
-        book = Book(content, author, title)
-        self.books.append(book)
+            case 3:
+                title = input("Enter title of the book you want to delete: ")
+                library.delete_book(title)
 
-    def get_book(self, title: str):
-        for book in self.books:
-            if book.title.lower() == title.lower():
-                return book
-            
+            case 4:
+                title = input("Enter title of the book you want to edit: ")
+                library.edit_book(title)
 
-    def delete_book(self, title: str):
-        for book in self.books:
-            if book.title.lower() == title.lower():
-                self.books.remove(book)
+            case 5:
+                text = input("Enter search text: ")
+                library.search_by_content(text)
 
-    def show_book_titles(self):
-        for book in self.books:
-            print(f" - {book.title}")
 
-    def print_book(self, title: str):
-        for book in self.books:
-            if book.title.lower() == title.lower():
-                print(book)
-    
+            case 6:
+                library.show_book_titles()
 
-lib = Library()
+            case 7:
+                library.book_count()
 
-lib.add_book("Hello WOrld", "Khuzaima", "C++")
-lib.add_book("Learn Python", "Mosh", "Fluent Python")
+            case 8:
+                print(guide)
 
-book: Book = lib.get_book("c++")
+            case 9:
+                print("Thank you..\n")
+                break
+                
+            case _:
+                print("Invalid input..")
