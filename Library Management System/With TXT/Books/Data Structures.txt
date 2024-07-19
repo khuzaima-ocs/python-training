@@ -1,3 +1,0 @@
-Book Title:     Data Structures
-Author:         Emily Johnson
-Content:        Understand key data structures and their applications in solving complex computational problems.

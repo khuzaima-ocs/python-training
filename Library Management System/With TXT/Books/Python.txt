@@ -1,3 +1,0 @@
-Book Title:     Python
-Author:         Thomas
-Content:        Welcome to Fluent Python

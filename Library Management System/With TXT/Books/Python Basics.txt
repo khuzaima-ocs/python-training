@@ -1,3 +1,0 @@
-Book Title:     Python Basics
-Author:         Jane Doe
-Content:        Discover the fundamentals of Python, a versatile and beginner-friendly programming language.

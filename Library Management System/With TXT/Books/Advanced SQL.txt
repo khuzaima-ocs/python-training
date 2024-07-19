@@ -1,3 +1,0 @@
-Book Title:     Advanced SQL
-Author:         Michael Green
-Content:        Master the advanced concepts of SQL for efficient database management and complex query optimization.

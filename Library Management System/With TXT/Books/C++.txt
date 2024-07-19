@@ -1,3 +1,0 @@
-Book Title:     C++
-Author:         Khuzaima Ahmed
-Content:        Welcome to C++

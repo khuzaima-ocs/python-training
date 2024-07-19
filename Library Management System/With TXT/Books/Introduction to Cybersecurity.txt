@@ -1,3 +1,0 @@
-Book Title:     Introduction to Cybersecurity
-Author:         Rachel White
-Content:        Explore the foundational principles of cybersecurity and strategies to protect against cyber threats.

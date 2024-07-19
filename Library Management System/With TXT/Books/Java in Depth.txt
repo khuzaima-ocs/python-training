@@ -1,3 +1,0 @@
-Book Title:     Java in Depth
-Author:         John Smith
-Content:        Delve into the intricacies of Java, exploring object-oriented programming and advanced features.
