@@ -34,14 +34,21 @@ data_4 = [
     ("Khuzaima", 23, 3.4),("Adeel", 22, 2.7), ("Hanan", 21, 3.3)
 ]
 
+data_5 = [
+    1,2,3,4,5,6,7,8,9,10,11,12,13
+]
+
 df_1 = pd.DataFrame(data_1)
 df_2 = pd.DataFrame(data_2)
 df_3 = pd.DataFrame(data_3)
 df_4 = pd.DataFrame(data_4)
-df_5 = pd.DataFrame(series)
+df_5 = pd.DataFrame(data_5)
+df_6 = pd.DataFrame(series)
+
 
 print(df_1, end="\n--------------\n")
 print(df_2, end="\n--------------\n")
 print(df_3, end="\n--------------\n")
 print(df_4, end="\n--------------\n")
 print(df_5, end="\n--------------\n")
+print(df_6, end="\n--------------\n")
