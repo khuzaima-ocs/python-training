@@ -9,8 +9,8 @@ UPLOAD_PATH = os.path.join(BASE_PATH, 'uploads')
 
 timestr = time.strftime("%Y%m%d-%H%M%S")
 
-@app.post('/upload-json-file')
-async def upload_json_file(file: UploadFile):
+@app.post('/upload-json')
+async def upload_json(file: UploadFile):
     if not file.filename.endswith('.json'):
         raise HTTPException(status_code=400, detail="Only JSON files are allowed")
     
@@ -30,7 +30,7 @@ async def upload_json_file(file: UploadFile):
     }, status_code=201)
 
 @app.post('/upload-file')
-async def upload_any_file(file: UploadFile):
+async def upload_file(file: UploadFile):
     try:
         old_filename, file_ext = file.filename.split('.')
         new_filename = f"{old_filename}_{timestr}.{file_ext}"
@@ -50,4 +50,3 @@ async def download_file(filename: str):
     download_file_path = os.path.join(UPLOAD_PATH, filename)
 
     return FileResponse(path=download_file_path)
-
