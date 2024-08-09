@@ -1,0 +1,33 @@
+element {
+	--tw-ring-offset-shadow: 0 0 #0000;
+	--tw-ring-shadow: 0 0 #0000;
+	--tw-shadow: 0 10px 11px -3px #0000001a, 0 -3px 10px -3px #0000001a;
+}
+:root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	color-scheme: light dark;
+	color: rgba(0, 0, 0, 0.87);
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: white;
+	--dark-primary: rgb(96,46,205);
+	--light-primary: rgb(69,203,232);
+  --secondary-color: rgb(252,135,4);
+  --dark-background: rgb(34,17,51);
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0px;	
+	padding: 0px;
+}
+
+html, body {
+    overflow-x: hidden;
+}
