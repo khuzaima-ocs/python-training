@@ -1,0 +1,174 @@
+{% extends "base.html" %} 
+
+{% block title %} Home {% endblock %} 
+
+{% load static %} 
+
+{% block extra_css_imports %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %} 
+
+{% block body_content %}
+<div class="fullpage">
+  <div class="section aboutme" data-anchor="aboutme">
+    <div class="opaque-bg animated fadeInDown">
+      <h1 style="color: white">
+        KHUZAIMA<span style="color: #ff6363">/</span>AHMED
+      </h1>
+      <p><span id="holder"></span><span class="blinking-cursor">|</span></p>
+    </div>
+  </div>
+</div> 
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // typing animation
+    function writeText(element, content) {
+      let contentArray = content.split("");
+      let current = 0;
+      let interval = setInterval(function () {
+        if (current < contentArray.length) {
+          element.textContent += contentArray[current++];
+        } else {
+          clearInterval(interval);
+        }
+      }, 80);
+    }
+  
+    // input text for typing animation
+    writeText(document.getElementById("holder"), "FULL STACK DEV + PROBLEM SOLVER");
+  
+
+    // Push the body and the nav over by 285px over
+    function main() {
+      document.querySelector(".fa-bars").addEventListener('click', function () {
+        document.querySelector(".nav-screen").style.right = "0px";
+        document.body.style.right = "285px";
+      });
+  
+      // Then push them back
+      document.querySelector(".fa-times").addEventListener('click', function () {
+        document.querySelector(".nav-screen").style.right = "-285px";
+        document.body.style.right = "0px";
+      });
+  
+      document.querySelectorAll(".nav-links a").forEach(function(link) {
+        link.addEventListener('click', function () {
+          document.querySelector(".nav-screen").style.right = "-285px";
+          document.body.style.right = "0px";
+        });
+      });
+    }
+  
+    main();
+  
+    // initiate full page scroll
+    new fullpage('#fullpage', {
+      scrollBar: true,
+      responsiveWidth: 400,
+      navigation: true,
+      navigationTooltips: ["home", "about", "portfolio", "contact", "connect"],
+      anchors: ["home", "about", "portfolio", "contact", "connect"],
+      menu: "#myMenu",
+      fitToSection: false,
+  
+      afterLoad: function (origin, destination, direction) {
+        var loadedSection = this;
+  
+        //using index
+        if (destination.index == 0) {
+          /* add opacity to arrow */
+          document.querySelectorAll(".fa-chevron-down").forEach(function(arrow) {
+            arrow.style.opacity = "1";
+          });
+          document.querySelectorAll(".header-links a").forEach(function(link) {
+            link.style.color = "white";
+          });
+          document.querySelector(".header-links").style.backgroundColor = "transparent";
+        } else {
+          document.querySelectorAll(".header-links a").forEach(function(link) {
+            link.style.color = "black";
+          });
+          document.querySelector(".header-links").style.backgroundColor = "white";
+        }
+  
+        //using index
+        if (destination.index == 1) {
+          /* animate skill bars */
+          document.querySelectorAll(".skillbar").forEach(function(skillbar) {
+            let bar = skillbar.querySelector(".skillbar-bar");
+            bar.style.width = skillbar.getAttribute("data-percent");
+          });
+        }
+      }
+    });
+  
+    // move section down one
+    document.getElementById("moveDown").addEventListener('click', function () {
+      fullpage_api.moveSectionDown();
+    });
+  
+    // fullpage.js link navigation
+    document.getElementById("skills").addEventListener('click', function () {
+      fullpage_api.moveTo(2);
+    });
+  
+    document.getElementById("projects").addEventListener('click', function () {
+      fullpage_api.moveTo(3);
+    });
+  
+    document.getElementById("contact").addEventListener('click', function () {
+      fullpage_api.moveTo(4);
+    });
+  
+    // smooth scrolling
+    document.querySelectorAll('a[href*="#"]:not([href="#"])').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+          var target = document.querySelector(this.hash);
+          target = target ? target : document.querySelector('[name=' + this.hash.slice(1) + ']');
+          if (target) {
+            e.preventDefault();
+            window.scrollTo({
+              top: target.offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+  
+    //ajax form
+    var form = document.getElementById("ajax-contact");
+    var formMessages = document.getElementById("form-messages");
+  
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+  
+      var formData = new FormData(form);
+  
+      fetch(form.getAttribute('action'), {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        formMessages.classList.remove("error");
+        formMessages.classList.add("success");
+        formMessages.textContent = data;
+  
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
+      })
+      .catch(error => {
+        formMessages.classList.remove("success");
+        formMessages.classList.add("error");
+        formMessages.textContent = "Oops! An error occurred and your message could not be sent.";
+      });
+    });
+  });
+
+</script>
+{% endblock %}

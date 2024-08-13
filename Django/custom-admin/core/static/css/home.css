@@ -1,0 +1,48 @@
+body {
+    height: 100vh;
+}
+
+.fullpage {
+  height: 100%;
+  padding-top: 5.5rem;
+}
+
+.section {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.aboutme {
+  background: url("https://s3-us-west-2.amazonaws.com/files.bradengelhardt.com/brad-bg-main.jpg")
+    no-repeat;
+  background-size: cover;
+}
+
+.aboutme p {
+  color: white;
+  font-weight: 100;
+  font-size: 17.4px;
+}
+
+.opaque-bg {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 380px;
+  padding: 1px 1px 5px 5px;
+}
+
+.blinking-cursor {
+  font-weight: 500;
+  margin-left: 4px;
+  font-size: 20px;
+  color: white !important;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}

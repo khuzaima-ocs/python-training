@@ -1,0 +1,66 @@
+<header class="header" id="header">
+  <nav class="nav container">
+    <a href="" class="nav__logo">ControlFlow</a>
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a href="" class="nav__link">
+            <i class="bi bi-arrow-up-right"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="" class="nav__link">
+            <i class="bi bi-arrow-up-right"></i>
+            <span>About</span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="" class="nav__link">
+            <i class="bi bi-arrow-up-right"></i>
+            <span>Projects</span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="" class="nav__link">
+            <i class="bi bi-arrow-up-right"></i>
+            <span>Experience</span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="" class="nav__link">
+            <i class="bi bi-arrow-up-right"></i>
+            <span>Contact</span>
+          </a>
+        </li>
+      </ul>
+      <!-- Close Start -->
+      <div class="nav__close" id="nav-close">
+        <i class="bi bi-x-lg"></i>
+      </div>
+      <!-- Close End -->
+  </nav>
+</header>
+
+<!-- Main End -->
+<!-- JS Start -->
+<script>
+  const navMenu = document.getElementById("nav-menu"),
+    navToggle = document.getElementById("nav-toggle"),
+    navClose = document.getElementById("nav-close");
+
+  /* Menu show */
+  if (navToggle) {
+    navToggle.addEventListener("click", () => {
+      navMenu.classList.add("show-menu");
+    });
+  }
+
+  /* Menu hidden */
+  if (navClose) {
+    navClose.addEventListener("click", () => {
+      navMenu.classList.remove("show-menu");
+    });
+  }
+</script>
+<!-- JS End -->

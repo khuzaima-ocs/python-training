@@ -3,7 +3,9 @@ from .models import Course, Lesson, Person
 import math
 from django.contrib import admin
 
-admin.AdminSite.site_header = "Custom Admin Panel"
+admin.AdminSite.site_header = "ControlFlow"
+admin.site.site_title = "CF"
+admin.site.index_title = "Dashboard"
 
 class LessonTabularInline(admin.TabularInline):
     model = Lesson
@@ -49,3 +51,4 @@ class LessonAdmin(admin.ModelAdmin):
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('UserImage', 'name', 'dob', 'Age')
     list_display_links = ('name',)
+    fields = ('name', 'dob', 'image')

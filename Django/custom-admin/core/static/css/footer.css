@@ -1,0 +1,101 @@
+
+header h1 {
+    font-family: Black Ops One;
+}
+
+/* clicked link effect */
+a, a:visited {
+    text-decoration: none;
+}
+
+content a, content a:visited {
+    text-decoration: none;
+    color: black;
+    font-family: Fruktur;
+    font-size: 24px;
+}
+
+content a p:hover{
+    background-color: yellow;
+}
+
+/* ======- FOOTER -====== */
+footer {
+    padding: 0.5rem;
+    background-color: #000000;
+    color: white;
+    text-align: center;
+}
+
+/* footer text */
+footer div p{
+    font-family: var(--body-font);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+footer div p i.red{
+    color: red;
+    size: 24px;
+}
+
+/* footer text effects */
+footer div p span{
+    transition: underline, color 0.5s ease-in-out;
+    color: white;
+}
+
+footer div p span:hover{
+    text-decoration: underline;
+}
+
+/* Footer Image Links */
+footer a.github {
+    -webkit-transition:color 500ms ease;
+    -moz-transition:color 500ms ease;
+    -o-transition:color 500ms ease;
+    transition: color 500ms ease;
+    font-size: 3em;
+    color: rgb(13,38,54);
+    color: darkgray;
+    padding: 10px;
+    display:inline-block;
+}
+
+footer a.codepen {
+    -webkit-transition:color 500ms ease;
+    -moz-transition:color 500ms ease;
+    -o-transition:color 500ms ease;
+    transition: color 500ms ease;
+    font-size: 3em;
+    color: black;
+    padding: 10px;
+    display:inline-block;
+}
+
+/* image links hover effects */
+footer a.github:hover {
+    color: rgb(255, 255, 255);
+}
+
+footer a.codepen:hover {
+    color: darkgray;
+}
+
+/* Resposive Footer */
+footer.mobile {
+    display:none;
+}
+
+@media screen and (max-width: 400px) {
+    footer.pc {
+        display:none;
+    }
+    footer.mobile {
+        display:block;
+    }
+    footer.mobile div p {
+        font-size: 15px;
+    }
+
+}
