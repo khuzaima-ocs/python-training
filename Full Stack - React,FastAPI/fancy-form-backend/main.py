@@ -1,4 +1,3 @@
-import base64
 import os
 from fastapi import FastAPI, Depends, File, UploadFile
 from fastapi.responses import FileResponse, JSONResponse
@@ -8,6 +7,8 @@ import models, dtos, utils
 from database import engine, get_db
 from sqlalchemy.orm import Session
 from fastapi.staticfiles import StaticFiles
+from fastapi_pagination import Page, Params, paginate
+
 
 app = FastAPI()
 
@@ -55,8 +56,9 @@ async def sign_up(user_data: dtos.User_request_dto = Depends(dtos.User_request_d
             content=str(e)
         )
     
-@app.get('/users' , response_model=list[dtos.User_resposne_dto])
-async def get_users(search_query: str = "", db: Session = Depends(get_db)):
+
+@app.get('/users' , response_model=Page[dtos.User_resposne_dto])
+async def get_users(search_query: str = "",params: Params = Depends(), db: Session = Depends(get_db)):
     query = db.query(models.User)
     if search_query:
         query = query.filter(
@@ -69,7 +71,7 @@ async def get_users(search_query: str = "", db: Session = Depends(get_db)):
     for user in users:
         user.display_pic = user.display_pic.split('uploads\\')[1]
 
-    return users
+    return paginate(users, params)
     
 
 @app.get("/image/{image_name}")
