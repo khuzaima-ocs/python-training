@@ -8,7 +8,7 @@ const Home = ({ setScreen }) => {
   const [searchText, setSearchText] = useState("");
   const [users, setUsers] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(4);
 
@@ -16,24 +16,19 @@ const Home = ({ setScreen }) => {
     fetchUsers();
   }, [page]);
 
-  const fetchUsers = (e) => {
-    if (e) e.preventDefault();
+  const fetchUsers = () => {
     if (isFetching) return;
     setIsFetching(true);
     try {
       axios
         .get(
-          "http://127.0.0.1:8000/users?search_query=" +
-            searchText +
-            "&size=" +
-            totalItems +
-            "&page=" +
-            page
+          `http://127.0.0.1:8000/users?search_query=${searchText}&size=${totalItems}&page=${page + 1}`
         )
         .then((res) => {
+          console.log(res);
           setUsers(res.data.items);
           setTotalPages(res.data.pages);
-          setPage(res.data.page);
+          setPage(res.data.page - 1); 
           setIsFetching(false);
         });
     } catch (e) {
@@ -43,13 +38,15 @@ const Home = ({ setScreen }) => {
   };
 
   const updateData = (e) => {
-    setPage(1)
-    setTotalPages(1)
-    fetchUsers(e)
-  }
+    e.preventDefault();
+    if(page == 0) {
+      fetchUsers()
+    }
+    setPage(0);
+  };
 
   const handlePageClick = (event) => {
-    setPage(event.selected + 1);
+    setPage(event.selected);
   };
 
   return (
@@ -65,7 +62,6 @@ const Home = ({ setScreen }) => {
             onChange={(e) => setSearchText(e.target.value)}
             placeholder="Search username or email"
           />
-
           <button type="submit" className="search-button">
             Search
           </button>
@@ -73,22 +69,20 @@ const Home = ({ setScreen }) => {
         {users.length > 0 ? (
           <>
             <div className="cards-container">
-              {users.map((user) => {
-                return (
-                  <div key={user.email} className="form-container card">
-                    <img
-                      className="card-image"
-                      src={`http://127.0.0.1:8000/image/${user.display_pic}`}
-                    />
-
-                    <p className="card-user-name">
-                      {user.first_name + " " + user.last_name}
-                    </p>
-                    <div className="line"></div>
-                    <p className="card-user-username">{user.username}</p>
-                  </div>
-                );
-              })}
+              {users.map((user) => (
+                <div key={user.email} className="form-container card">
+                  <img
+                    className="card-image"
+                    src={`http://127.0.0.1:8000/image/${user.display_pic}`}
+                    alt={user.username}
+                  />
+                  <p className="card-user-name">
+                    {user.first_name + " " + user.last_name}
+                  </p>
+                  <div className="line"></div>
+                  <p className="card-user-username">{user.username}</p>
+                </div>
+              ))}
             </div>
             <ReactPaginate
               breakLabel="..."
@@ -98,6 +92,7 @@ const Home = ({ setScreen }) => {
               pageCount={totalPages}
               previousLabel="<"
               renderOnZeroPageCount={null}
+              forcePage={page}
             />
           </>
         ) : (

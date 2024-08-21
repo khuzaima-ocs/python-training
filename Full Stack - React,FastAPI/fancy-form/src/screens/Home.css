@@ -25,6 +25,7 @@
     cursor: pointer;
     position: relative;
     right: 94px;
+    transition : background-color 0.2s ease-in;
 }
 
 .search-button:hover {
@@ -57,12 +58,16 @@
     transform: scale(1.015);
 }
 
+.card img {
+    filter: brightness(0.96);
+}
+
 .card:hover .card-image {
     filter: brightness(1.05);
 }
 
 .card:hover .card-user-name {
-    color: rgb(198, 242, 252);
+    color: rgb(229, 243, 246);
 }
 
 .card-body {
@@ -93,6 +98,11 @@
     height: 2px;
     width: 20%;
     background-color: var(--secondary-color);
+    transition: width 0.3s ease-in-out;
+}
+
+.card:hover .line {
+    width: 25%;   
 }
 
 .no-user-to-show {
@@ -115,6 +125,7 @@
     border: none;
     background-color: var(--secondary-color);
     cursor: pointer;
+    transition: background-color 0.2s ease-in;
 }
 
 .floating-button:hover {
